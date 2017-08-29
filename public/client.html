@@ -47,11 +47,11 @@ function placeMarker(lat,lan) {
 
 	$(function (){
 
-		 var socket = io.connect('http://map-test.dev:4020');
+		 var socket = io.connect('192.34.56.8:4020');
   socket.on('walking', function (data) {
   	// var obj = jQuery.parseJSON(data);
 
-    // console.log(data.lat);
+    // console.lgit initog(data.lat);
     placeMarker(data.lat,data.long)
     socket.emit('my other event', { my: 'data' });
   });
