@@ -47,7 +47,7 @@ function placeMarker(lat,lan) {
 
 	$(function (){
 
-		 var socket = io.connect('192.34.56.8:4020');
+		 var socket = io.connect('http://192.34.56.8:4020');
   socket.on('walking', function (data) {
   	// var obj = jQuery.parseJSON(data);
 alert(data);
