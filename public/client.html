@@ -21,12 +21,12 @@
 <script>
 function myMap() {
   var mapCanvas = document.getElementById("map");
-  var myCenter=new google.maps.LatLng(51.508742,-0.120850);
-  var mapOptions = {center: myCenter, zoom: 5};
+  var myCenter=new google.maps.LatLng(6.9173788,79.948944);
+  var mapOptions = {center: myCenter, zoom: 16};
   window.map = new google.maps.Map(mapCanvas, mapOptions);
   google.maps.event.addListener(map, 'click', function(event) {
   	var latlang= event.latLng;
-    placeMarker(latlang.lat(),latlang.lng());
+    // placeMarker(latlang.lat(),latlang.lng());
   });
 }
 
