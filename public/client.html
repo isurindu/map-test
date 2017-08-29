@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<title>Hello testing</title>
+	  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+<body>
+
+
+<div id="map" style="width:100%;height:400px;"></div>
+
+
+
+
+
+<script>
+function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+  var mapOptions = {center: myCenter, zoom: 5};
+  window.map = new google.maps.Map(mapCanvas, mapOptions);
+  google.maps.event.addListener(map, 'click', function(event) {
+  	var latlang= event.latLng;
+    placeMarker(latlang.lat(),latlang.lng());
+  });
+}
+
+function placeMarker(lat,lan) {
+  var marker = new google.maps.Marker({
+    position: {lat: lat, lng: lan},
+    map: map,
+  });
+  // marker.set("id", 1);
+
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + lat + '<br>Longitude: ' + lan
+  });
+  // infowindow.open(map,marker);
+}
+</script>
+	<script>
+
+	$(function (){
+
+		 var socket = io.connect('http://map-test.dev:4020');
+  socket.on('walking', function (data) {
+  	// var obj = jQuery.parseJSON(data);
+
+    // console.log(data.lat);
+    placeMarker(data.lat,data.long)
+    socket.emit('my other event', { my: 'data' });
+  });
+
+	});
+ 
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIxcijx5WXolNkDMeXh-Heq-LZxl-xVMY&callback=myMap"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+</body>
+</html>
