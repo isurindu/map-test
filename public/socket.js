@@ -9,8 +9,8 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-  socket.emit('walking', { lat: 51.508742,long:-0.120850});
-  socket.on('my other event', function (data) {
+  // socket.emit('walking', { lat: 51.508742,long:-0.120850});
+  socket.on('walking', function (data) {
     console.log(data);
   });
 });
