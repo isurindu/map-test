@@ -5,12 +5,18 @@ var io = require('socket.io')(server);
 server.listen(4020);
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/socket.index.html');
+  res.sendFile(__dirname + '/map.html');
 });
 
+app.get('/test', function (req, res) {
+  res.sendFile(__dirname + '/test.html');
+});
+
+
 io.on('connection', function (socket) {
-  // socket.emit('walking', { lat: 51.508742,long:-0.120850});
-  socket.on('walking', function (data) {
-    console.log(data);
-  });
+	console.log("connected someone");
+	  socket.on('walking', function (location) {
+	    socket.emit('walking',location);
+	    console.log(location);
+	  });
 });

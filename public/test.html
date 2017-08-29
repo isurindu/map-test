@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test</title>
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+</head>
+<body>
+
+
+  <script>
+
+
+     var socket = io();
+   
+//6.909339, 79.978628
+  // socket.emit('walking', { lat: 6.909339,long:79.978628});
+
+
+   socket.on('walking', function (data) {
+    console.log(data);
+    // socket.emit('walking-debug', { dd: data });
+  });
+   // socket.emit('walking', { lat: 6.508742,long:79.120850 });
+</script>
+</body>
+</html>

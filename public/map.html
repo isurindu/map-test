@@ -43,27 +43,28 @@ function placeMarker(lat,lan) {
   // infowindow.open(map,marker);
 }
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIxcijx5WXolNkDMeXh-Heq-LZxl-xVMY&callback=myMap"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 	<script>
 
-	$(function (){
-
-		 var socket = io.connect('http://192.34.56.8:4020');
+	
+		 var socket = io();
   socket.on('walking', function (data) {
+  	console.log(data);
   	// var obj = jQuery.parseJSON(data);
 alert(data);
     // console.lgit initog(data.lat);
-    placeMarker(data.lat,data.long)
+    // placeMarker(data.lat,data.long)
 
-    // socket.emit('my other event', { my: 'data' });
+    // socket.emit('walking-debug', { dd: data });
   });
 //6.909339, 79.978628
-  // socket.emit('walking', { lat: 6.909339,long:79.978628});
+  socket.emit('walking', { lat: 6.909339,long:79.978628});
 
-	});
+
  
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIxcijx5WXolNkDMeXh-Heq-LZxl-xVMY&callback=myMap"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-
 </body>
 </html>
